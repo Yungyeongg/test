@@ -1,0 +1,55 @@
+.partner-buttons {
+        position: relative;
+        top: -15px; /* 버튼을 위로 10픽셀 이동 */
+    }
+        .partner {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            height: 280px; /* 固定の高さ */
+        }
+
+        .partner:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain; /* 이미지 비율을 유지하면서 크기를 고정 */
+            margin-bottom: 15px;
+        }
+
+        .file-input {
+            display: none; /* ファイル入力を隠す */
+        }
+
+        .add-partner-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 280px; /* パートナーカードと同じ高さ */
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            text-align: center;
+            color: #999;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-partner-btn:hover {
+            background-color: #f8f9fa;
+        }
+
+        .buttons-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .buttons-container button {
+            margin: 0 10px;
+        }

@@ -1,0 +1,24 @@
+ .partner {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .partner img {
+            max-width: 120px;
+            max-height: 120px;
+            height: auto;
+            width: auto;
+            margin-bottom: 15px;
+        }
+
+        .partner a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .partner a:hover {
+            text-decoration: underline;
+        }

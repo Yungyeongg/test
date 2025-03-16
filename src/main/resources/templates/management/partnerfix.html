@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パートナー管理ページ</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="/css/partnerfix.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">パートナー管理</h2>
+
+        <!-- パートナーリスト -->
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="partnerList">
+            <!-- 動的にパートナーが追加されます。 -->
+        </div>
+
+        <!-- 保存およびプレビューのボタン -->
+        <div class="buttons-container">
+            <button class="btn btn-success" id="savePartnersBtn">保存</button>
+            <button class="btn btn-primary" id="previewPartnersBtn">プレビュー</button>
+        </div>
+    </div>
+	<script>
+	 // パートナーリストを格納する配列
+    let partners = [
+        { name: 'パートナーA', logo: 'https://via.placeholder.com/150', link: '' },
+        { name: 'パートナーB', logo: 'https://via.placeholder.com/150', link: '' },
+        { name: 'パートナーC', logo: 'https://via.placeholder.com/150', link: '' },
+        { name: 'パートナーD', logo: 'https://via.placeholder.com/150', link: '' }
+    ];
+
+    // パートナーリストを画面に表示する関数
+    function displayPartners() {
+        const partnerList = document.getElementById('partnerList');
+        partnerList.innerHTML = ''; // 既存の内容をクリアします。
+
+        // パートナーリスト生成
+        partners.forEach((partner, index) => {
+            const partnerCard = `
+                <div class="col">
+                    <div class="partner bg-light">
+                        <input 
+                            type="text" 
+                            class="form-control mb-2" 
+                            placeholder="パートナー名を入力してください。" 
+                            id="partnerName${index}" 
+                            value="${partner.name}">
+                        <input 
+                            type="text" 
+                            class="form-control mb-2" 
+                            placeholder="リンクを入力してください。" 
+                            id="partnerLink${index}" 
+                            value="${partner.link}" 
+                            onchange="updateLink(${index})">
+                        <img src="${partner.logo}" alt="${partner.name} ロゴ" class="img-fluid" id="partnerLogo${index}">
+                        <div class="partner-buttons mt-2">
+                            <button class="btn btn-danger btn-sm" onclick="deletePartner(${index})">削除</button>
+                            <input type="file" class="file-input" id="fileInput${index}" onchange="changeLogo(${index})">
+                            <button class="btn btn-info btn-sm" onclick="document.getElementById('fileInput${index}').click();">ロゴ変更</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            partnerList.innerHTML += partnerCard;
+        });
+
+        // パートナー追加ボタン生成
+        const addPartnerCard = `
+            <div class="col">
+                <div class="add-partner-btn" onclick="addPartner()">
+                    + パートナー追加
+                </div>
+            </div>
+        `;
+        partnerList.innerHTML += addPartnerCard;
+    }
+
+    // パートナー削除関数
+    function deletePartner(index) {
+        partners.splice(index, 1); // 該当パートナーを削除
+        displayPartners(); // 更新されたパートナーリストを表示
+    }
+
+    // パートナーロゴ変更関数
+    function changeLogo(index) {
+        const fileInput = document.getElementById(`fileInput${index}`);
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                partners[index].logo = event.target.result; // ロゴURLを更新
+                displayPartners(); // 更新されたパートナーリストを表示
+            };
+            reader.readAsDataURL(file); // ファイルをデータURLとして読み込む
+        }
+    }
+
+    // パートナーリンク更新関数
+    function updateLink(index) {
+        const linkInput = document.getElementById(`partnerLink${index}`);
+        partners[index].link = linkInput.value; // リンク値を更新
+    }
+
+    // パートナー追加関数
+    function addPartner() {
+        const newPartner = { name: '', logo: 'https://via.placeholder.com/150', link: '' };
+        partners.push(newPartner); // 新しいパートナーを追加
+        displayPartners(); // 更新されたパートナーリストを表示
+    }
+
+    // 保存ボタンクリック時
+    document.getElementById('savePartnersBtn').addEventListener('click', () => {
+        console.log("保存されたパートナーリスト:", partners);
+        alert("変更されたパートナー情報が保存されました。");
+    });
+
+    // プレビューボタンクリック時
+    document.getElementById('previewPartnersBtn').addEventListener('click', () => {
+        window.location.href = "/submenu/partner"; // 実際のプレビューページURLに移動
+    });
+
+    // 初期パートナーリストを表示
+    displayPartners();
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+/* =========================== SUB */
+#shSub{display:flex;align-items:center;justify-content:center;height:425px;margin:0 auto;background-size:cover}
+#shSub .txt_area{padding-top:40px;color:#fff;text-align:center;font-family:var(--ko-font)}
+#shSub .txt_area p{margin-bottom:20px;font-size:46px;font-family:var(--eng-font), var(--ko-font)}
+#shSub .txt_area div{display:flex;justify-content:center;align-items:center;font-size:16px;font-weight:500}
+#shSub .txt_area div a{padding-top:3px}
+#shSub .txt_area div svg{fill:#fff}
+#shSub .txt_area div i{margin:0 20px;font-size:14px}
+/* 반응형 [s] */
+@media (max-width:1024px){
+#shSub{height:340px}
+#shSub .txt_area p{margin-bottom:8px;font-size:36px}
+#shSub .txt_area div{font-size:15px}
+}
+@media (max-width:480px){
+#shSub{height:50px;border-bottom:1px solid #e1e1e1;background:transparent}
+#shSub .txt_area{padding:0px}
+#shSub .txt_area p{margin-bottom:0px;color:#000;font-size:16px}
+#shSub .txt_area div{display:none}
+}
+/* 반응형 [e] */
+
+/* =========================== SNB */
+#shSnb{display:flex;justify-content:center;margin:0 auto 50px;background:var(--primary)}
+#shSnb li+li{border-left:1px solid rgba(255,255,255,.15)}
+#shSnb li a{display:block;min-width:160px;height:62px;padding:0 20px;font-size:17px;line-height:62px;text-align:center;color:#fff;font-family:var(--ko-font)}
+#shSnb li.on a{font-weight:600;color:var(--primary);background:#fff}
+/* 반응형 [s] */
+@media (max-width:1024px){
+#shSnb{display:none}
+}
+/* 반응형 [e] */
+
+/* =========================== PAGE */
+#greeting{font-size:15px;font-weight:400;line-height:1.8;letter-spacing:-.2px;color:#777;font-family:'Noto Sans KR'}
+#greeting .tit_area{padding:0 0 40px 5%;font-size:38px;font-weight:100;line-height:1.35;letter-spacing:-.5px;color:#222}
+#greeting .tit_area p{font-weight:600}
+#greeting .img{width:90%; height:420px;background:url(../img/sub/greeting_img.jpg) center no-repeat;background-size:cover}
+#greeting .cont{padding:40px 0 0 25%; position: relative; left: -230px;}
+#greeting .cont .st{font-size: 35px; color: black;}
+#greeting .cont .pl{white-space:pre-line}
+#greeting .cont .sign{margin-top:30px;font-weight:500;color:#222}
+#greeting .cont .sign span{margin-left:20px;font-size:17px}
+
+@media(max-width:1024px){
+#greeting{padding:20px;font-size:14px;line-height:1.6}
+#greeting .tit_area{padding:0;font-size:28px;line-height:1.4;color:#222;word-break:keep-all}
+#greeting .img{height:200px;margin:15px 0}
+#greeting .cont{padding:0}
+#greeting .cont .sign{margin-top:20px}
+#greeting .cont .sign span{margin-left:0;font-size:15px}
+}
+@media(max-width:768px){
+#greeting .cont .pl{white-space:normal}
+}
+@media(max-width:480px){
+#greeting{padding:15px 12px}	
+#greeting .tit_area{font-size:22px}
+}

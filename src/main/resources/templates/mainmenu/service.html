@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="naver-site-verification" content="" />
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="회사소개-회사소개">
+<meta property="og:description" content="">
+<meta property="og:image" content="/img/common/logo.png">
+<meta property="og:url" content="">
+<title>サービス</title>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/topmenu_script.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/feather.min.js"></script>
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/sh_common.css">
+<link rel="stylesheet" href="/css/sh_service.css">
+</head>
+<body>
+	<div id="sh_wrapper" class="sub">
+		<div th:insert="~{fragment/header :: header}"></div>
+		<div id="sh_container">
+			<div id="sh_container_wrapper">
+				<div id="shSub">
+					<div class="txt_area">
+						<p>サービス</p>
+						<div>
+							<a th:href="@{/}"><span class="sound_only">Home</span> <svg
+									xmlns="http://www.w3.org/2000/svg" height="24"
+									viewBox="0 -960 960 960" width="24">
+									<path
+										d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"></path></svg></a>
+							<i class="fa fa-angle-right"></i>サービス<i></i>
+						</div>
+					</div>
+				</div>
+				<ul id="shSnb">
+					<li class="on"><a th:href="@{/mainmenu/service}">サービス</a></li>
+				</ul>
+				<div id="sh_content">
+					<div id="greeting" class="pagecommon">
+						<div class="tit_area">
+							サービス<br />
+							<p>私たち株式会社SISは 日々発展していくIT業界に貢献できるよう様々な努力を傾注しています。</p>
+						</div>
+						<div class="img"></div>
+						<div class="cont">
+							<p class="st">システム開発</p>
+							<div class="pl">・汎用系・オープン系システム</div>
+							<div class="pl">・Windows系システム</div>
+							<div class="me">-企画提案・設計・製造・保守</div>
+						</div>
+					</div>
+				</div>
+				<div id="sh_content">
+					<div id="greeting" class="pagecommon">
+						<div class="img" style="background-image: url('img/sub/CRM.png');"></div>
+						<div class="cont2">
+							<p class="st">パッケージカスタマイズ</p>
+							<p class="st">開発・導入</p>
+							<div class="pl">・Dynamics CRM</div>
+							<div class="pl">・Intra-Mart</div>
+							<div class="pl">・Sales Force</div>
+							<div class="pl">・ERP</div>
+						</div>
+					</div>
+				</div>
+				<div id="sh_content">
+					<div id="greeting" class="pagecommon">
+						<div class="img" style="background-image: url('img/sub/AWS.jpg');"></div>
+						<div class="cont2">
+							<p class="st">クラウド開発</p>
+							<div class="pl">・AWS</div>
+							<div class="pl">ーAWSのサービスを用いたクラウド環境でのソリューション提案・開発</div>
+						</div>
+					</div>
+				</div>
+				<div th:replace="~{fragment/footer :: footer}"></div>
+			</div>
+			<script>
+				AOS.init();
+				feather.replace();
+
+				$(window).on("scroll", function() {
+					if ($(window).scrollTop() > 100) {
+						$('#fix_tel').addClass('active');
+					} else {
+						$('#fix_tel').removeClass('active');
+					}
+					return false;
+				});
+			</script>
+</body>
+</html>
+

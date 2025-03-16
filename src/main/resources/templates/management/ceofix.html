@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEO紹介修正画面</title>
+<link rel="stylesheet" href="/css/ceofix.css">
+</head>
+<body>
+	<h1>CEO紹介修正画面</h1>
+	<form id="editForm">
+		<div class="form-group">
+			<label for="title">タイトル</label> <input type="text" id="title"
+				placeholder="タイトルを入力してください" value="CEO紹介">
+		</div>
+		<div class="form-group">
+			<label for="subtitle">サブタイトル</label> <input type="text" id="subtitle"
+				placeholder="サブタイトルを入力してください" value="夢を分かち合う企業">
+		</div>
+		<div class="form-group">
+			<label for="photo">写真</label> <input type="file" id="photo"
+				accept="image/*">
+		</div>
+		<div class="form-group">
+			<label for="content">内容</label>
+			<textarea id="content">SISにお越しいただきありがとうございます。
+私たちSISはお客様の夢の実現をお手伝いし...</textarea>
+		</div>
+		<div class="button-group">
+			<button type="button" onclick="saveData()">保存</button>
+			<button type="button" class="cancel" onclick="resetForm()">キャンセル</button>
+		</div>
+	</form>
+
+	<script>
+		const initialData = {
+			title : "",
+			subtitle : "",
+			content : "",
+			photoSrc : ""
+		};
+
+		function saveData() {
+			const data = {
+				title : document.getElementById('title').value,
+				subtitle : document.getElementById('subtitle').value,
+				content : document.getElementById('content').value,
+				photo : document.getElementById('photo').files[0] || null
+			};
+			console.log("Saving data:", data);
+			alert("データが保存されました");
+		}
+
+		function resetForm() {
+			document.getElementById('title').value = initialData.title;
+			document.getElementById('subtitle').value = initialData.subtitle;
+			document.getElementById('content').value = initialData.content;
+		}
+		resetForm();
+	</script>
+</body>
+</html>

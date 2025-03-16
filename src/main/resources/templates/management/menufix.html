@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>メニュー管理画面</title>
+<link rel="stylesheet" href="../css/menufix.css" />
+</head>
+<body>
+	<h1>メニュー管理画面</h1>
+	<div class="menu-management">
+		<div class="menu-section" id="mainMenuSection">
+			<h2>大メニュー管理</h2>
+			<ul id="mainMenuList">
+			</ul>
+			<input type="text" id="newMainMenu" placeholder="大メニューを入力">
+			<button onclick="addMainMenu()">追加</button>
+			<button class="delete" onclick="deleteMainMenu()">削除</button>
+		</div>
+		<div class="menu-section" id="subMenuSection">
+			<h2>小メニュー管理</h2>
+			<ul id="subMenuList">
+			</ul>
+			<input type="text" id="newSubMenu" placeholder="小メニューを入力">
+			<button onclick="addSubMenu()">追加</button>
+		</div>
+	</div>
+
+	<div class="actions">
+		<button onclick="saveMenus()">保存</button>
+		<button onclick="resetMenus()">キャンセル</button>
+	</div>
+
+	<script>
+        let mainMenus = ["会社概要", "サービス", "採用情報", "お問い合わせ", "ログイン"];
+        let subMenus = {
+            "会社概要": ["会社紹介", "CEO紹介", "アクセス", "パートナー", "マージン"],
+            "サービス": [],
+            "採用情報": [],
+            "お問い合わせ": [],
+            "ログイン": []
+        };
+
+        let selectedMainMenu = null;
+
+        function renderMainMenu() {
+            const mainMenuList = document.getElementById('mainMenuList');
+            mainMenuList.innerHTML = '';
+            mainMenus.forEach(menu => {
+                const li = document.createElement('li');
+                li.textContent = menu;
+                li.onclick = () => selectMainMenu(menu);
+                li.style.cursor = 'pointer';
+                mainMenuList.appendChild(li);
+            });
+        }
+
+        function renderSubMenu() {
+            const subMenuList = document.getElementById('subMenuList');
+            subMenuList.innerHTML = '';
+            if (selectedMainMenu && subMenus[selectedMainMenu]) {
+                subMenus[selectedMainMenu].forEach(menu => {
+                    const li = document.createElement('li');
+                    li.style.display = 'flex';
+                    li.style.gap = '10px';
+                    li.style.alignItems = 'center';
+                    li.style.marginBottom = '10px';
+                    li.textContent = menu;
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = '削除';
+                    deleteButton.className = 'delete';
+                    deleteButton.onclick = () => deleteSubMenu(menu);
+                    li.appendChild(deleteButton);
+                    subMenuList.appendChild(li);
+                });
+            }
+        }
+
+        function selectMainMenu(menu) {
+            selectedMainMenu = menu;
+            renderSubMenu();
+        }
+
+        function addMainMenu() {
+            const newMenu = document.getElementById('newMainMenu').value.trim();
+            if (newMenu && !mainMenus.includes(newMenu)) {
+                mainMenus.push(newMenu);
+                subMenus[newMenu] = [];
+                document.getElementById('newMainMenu').value = '';
+                renderMainMenu();
+            }
+        }
+
+        function deleteMainMenu() {
+            if (selectedMainMenu) {
+                mainMenus = mainMenus.filter(menu => menu !== selectedMainMenu);
+                delete subMenus[selectedMainMenu];
+                selectedMainMenu = null;
+                renderMainMenu();
+                renderSubMenu();
+            } else {
+                alert('削除する大メニューを選択してください。');
+            }
+        }
+
+        function addSubMenu() {
+            if (!selectedMainMenu) {
+                alert('大メニューを選択してください。');
+                return;
+            }
+            const newMenu = document.getElementById('newSubMenu').value.trim();
+            if (newMenu && !subMenus[selectedMainMenu].includes(newMenu)) {
+                subMenus[selectedMainMenu].push(newMenu);
+                document.getElementById('newSubMenu').value = '';
+                renderSubMenu();
+            }
+        }
+
+        function deleteSubMenu(menu) {
+            if (selectedMainMenu) {
+                subMenus[selectedMainMenu] = subMenus[selectedMainMenu].filter(m => m !== menu);
+                renderSubMenu();
+            }
+        }
+
+        function saveMenus() {
+            console.log("Main Menus:", mainMenus);
+            console.log("Sub Menus:", subMenus);
+            alert('メニューが保存されました。');
+        }
+
+        function resetMenus() {
+            location.reload();
+        }
+        renderMainMenu();
+    </script>
+</body>
+</html>

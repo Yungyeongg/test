@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="naver-site-verification" content="" />
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="회사소개-회사소개">
+<meta property="og:description" content="">
+<meta property="og:image" content="/img/common/logo.png">
+<meta property="og:url" content="">
+<title>パートナー</title>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/topmenu_script.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/feather.min.js"></script>
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/sh_common.css">
+<link rel="stylesheet" href="/css/sh_sub.css">
+<link rel="stylesheet" href="/css/partner.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div id="sh_wrapper" class="sub">
+		<div th:insert="~{fragment/header :: header}"></div>
+		<div id="sh_container">
+			<div id="sh_container_wrapper">
+				<div id="shSub">
+					<div class="txt_area">
+						<p>パートナー</p>
+						<div>
+							<a th:href="@{/}"><span class="sound_only">Home</span>
+							<svg xmlns="http://www.w3.org/2000/svg" height="24"
+									viewBox="0 -960 960 960" width="24">
+									<path
+										d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"></path></svg></a>
+							<i class="fa fa-angle-right"></i>会社概要<i class="fa fa-angle-right"></i>パートナー
+						</div>
+					</div>
+				</div>
+				<ul id="shSnb">
+					<li><a th:href="@{/submenu/introduction}">会社紹介</a></li>
+					<li><a th:href="@{/submenu/ceo}">CEO紹介</a></li>
+					<li><a th:href="@{/submenu/access}">アクセス</a></li>
+					<li class="on"><a th:href="@{/submenu/partner}">パートナー</a></li>
+					<li><a th:href="@{/submenu/margin}">マージン</a></li>
+				</ul>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">파트너 목록</a>
+    </nav>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">파트너 목록</h2>
+
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="partnerList">
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="partner-management.html" class="btn btn-secondary">관리 페이지로 돌아가기</a>
+        </div>
+    </div>
+		<div th:replace="~{fragment/footer :: footer}"></div>
+	</div>
+	<script>
+		AOS.init();
+		feather.replace();
+
+		$(window).on("scroll", function() {
+			if ($(window).scrollTop() > 100) {
+				$('#fix_tel').addClass('active');
+			} else {
+				$('#fix_tel').removeClass('active');
+			}
+			return false;
+		});
+	</script>
+	<script>
+        const savedPartners = JSON.parse(localStorage.getItem('partners')) || [];
+
+        function displayPartners() {
+            const partnerList = document.getElementById('partnerList');
+            partnerList.innerHTML = '';
+
+            savedPartners.forEach(partner => {
+                const partnerCard = `
+                    <div class="col">
+                        <div class="partner bg-light">
+                            <img src="${partner.logo}" alt="${partner.name} 로고" class="img-fluid">
+                            <h5>${partner.name || '이름 없음'}</h5>
+                            <a href="${partner.link}" target="_blank">${partner.link || '링크 없음'}</a>
+                        </div>
+                    </div>
+                `;
+                partnerList.innerHTML += partnerCard;
+            });
+        }
+
+        displayPartners();
+    </script>
+</body>
+</html>
+

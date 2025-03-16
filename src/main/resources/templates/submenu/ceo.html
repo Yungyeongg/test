@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="naver-site-verification" content="" />
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="회사소개-회사소개">
+<meta property="og:description" content="">
+<meta property="og:image" content="/img/common/logo.png">
+<meta property="og:url" content="">
+<title>CEO紹介</title>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/topmenu_script.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/feather.min.js"></script>
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/sh_common.css">
+<link rel="stylesheet" href="/css/sh_ceo.css">
+</head>
+<body>
+	<div id="sh_wrapper" class="sub">
+		<div th:insert="~{fragment/header :: header}"></div>
+		<div id="sh_container">
+			<div id="sh_container_wrapper">
+				<div id="shSub">
+					<div class="txt_area">
+						<p>CEO紹介</p>
+						<div>
+							<a th:href="@{/}"><span class="sound_only">Home</span> <svg
+									xmlns="http://www.w3.org/2000/svg" height="24"
+									viewBox="0 -960 960 960" width="24">
+									<path
+										d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"></path></svg></a>
+							<i class="fa fa-angle-right"></i>会社概要<i class="fa fa-angle-right"></i>CEO紹介
+						</div>
+					</div>
+				</div>
+				<ul id="shSnb">
+					<li><a th:href="@{/submenu/introduction}">会社紹介</a></li>
+					<li class="on"><a th:href="@{/submenu/ceo}">CEO紹介</a></li>
+					<li><a th:href="@{/submenu/access}">アクセス</a></li>
+					<li><a th:href="@{/submenu/partner}">パートナー</a></li>
+					<li><a th:href="@{/submenu/margin}">マージン</a></li>
+				</ul>
+				<div id="sh_content">
+					<!-- 서브페이지 [s] -->
+					<div id="ceo" class="pagecommon">
+						<div class="tit_area">
+							CEO紹介<br />
+							<p>
+								<b>夢を分かち合う企業</b>
+							</p>
+						</div>
+						<div class="img"></div>
+						<div class="cont">
+							<p class="st">SISにお越しいただきありがとうございます。</p>
+							<div class="pl">私どもSISは収益創出だけのための経営理念よりは、共に共有し共に成長できる友人のようなパートナーとして、人のための技術でより豊かで新鮮に変化させるためにすべての力量を集中しています。</div>
+							<br />
+							<div class="pl">
+								怠惰でなく、現実に安住しない姿勢で絶え間ない挑戦と革新で現分野の最高の企業になるために共に考え、共に成し遂げるSISになろうと思います。
+								いつも見守ってくださる方々に失望されない企業になります。<br />
+							</div>
+							<p class="sign">
+								SIS <span>CEO名前</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="~{fragment/footer :: footer}"></div>
+	</div>
+	<script>
+		AOS.init();
+		feather.replace();
+
+		$(window).on("scroll", function() {
+			if ($(window).scrollTop() > 100) {
+				$('#fix_tel').addClass('active');
+			} else {
+				$('#fix_tel').removeClass('active');
+			}
+			return false;
+		});
+	</script>
+</body>
+</html>
+

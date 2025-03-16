@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="naver-site-verification" content="" />
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sample">
+<meta property="og:description" content="">
+<meta property="og:image" content="../img/common/logo.png">
+<meta property="og:url" content="">
+<title>Sample</title>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/topmenu_script.js"></script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/feather.min.js"></script>
+<script src="/js/gsap.min.js"></script>
+<script src="/js/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="/css/sh_common.css">
+<link rel="stylesheet" href="/css/sh_main.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/swiper.min.css">
+</head>
+<body>
+	<header id="sh_hd">
+		<div class="sh_lnb_bg"></div>
+		<div id="shGnb" class="main">
+			<div class="sh_logo">
+				<base th:href="@{/}"><img th:src="@{../img/common/logo.png}" alt="Sample"></base>
+			</div>
+			<nav class="sh_nav">
+				<ul>
+					<li><a th:href="@{/submenu/introduction}">会社概要</a>
+						<ul class="sh_lnb_s">
+							<li><a th:href="@{/submenu/introduction}">会社紹介</a></li>
+							<li><a th:href="@{/submenu/ceo}">CEO紹介</a></li>
+							<li><a th:href="@{/submenu/access}">アクセス</a></li>
+							<li><a th:href="@{/submenu/partner}">パートナー</a></li>
+							<li><a th:href="@{/submenu/margin}">マージン</a></li>
+						</ul></li>
+					<li><a th:href="@{/mainmenu/service}">サービス</a></li>
+					<li><a th:href="@{/mainmenu/recruitment}">採用情報</a></li>
+					<li><a th:href="@{/mainmenu/inquiry}">お問い合わせ</a></li>
+					<li><a th:href="@{https://sd-webmail10.rentalserver.jp/}">ログイン</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="topmenuM">
+			<h1 id="m_logo">
+				<a th:href="@{/}"><img th:src="@{../img/common/logo.png}" alt="Sample" /></a>
+			</h1>
+			<div id="m_navBtn">
+				<span></span>
+			</div>
+			<div id="navWrap">
+				<div class="inner">
+					<ul class="m_lnb">
+						<li>
+							<button class="m_bmenu" type="button">会社概要</button>
+							<ul class="m_smenu">
+								<li><a th:href="@{/submenu/introduction}">会社紹介</a></li>
+								<li><a href="">CEO紹介</a></li>
+								<li><a href="">アクセス</a></li>
+								<li><a href="">パートナー</a></li>
+							</ul>
+						</li>
+						<li>
+							<button class="m_bmenu" type="button">サービス</button>
+						</li>
+						<li>
+							<button class="m_bmenu" type="button">採用情報</button>
+						</li>
+						<li>
+							<button class="m_bmenu" type="button">お問い合わせ</button>
+						</li>
+					</ul>
+					<p class="mo_hd_copy">ⓒ Sample</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			ScrollTrigger.matchMedia({
+				"(min-width: 1025px)" : function() {
+					gsap.to("#sh_hd", {
+						scrollTrigger : {
+							trigger : "#sh_hd",
+							toggleClass : "pop",
+							start : "-10px top",
+							end : "+=1500",
+						},
+					});
+				}
+			})
+		</script>
+	</header>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アクセス修正</title>
+<link rel="stylesheet" href="/css/accessfix.css">
+</head>
+<body>
+    <div class="container">
+        <h1>グーグルマップ設定</h1>
+        <div class="form-group">
+            <h2>ピンポイント設定</h2>
+            <label for="pinLatitude">緯度</label>
+            <input type="text" id="pinLatitude" placeholder="35.6895">
+
+            <label for="pinLongitude">経度</label>
+            <input type="text" id="pinLongitude" placeholder="139.6917">
+
+            <label for="pinName">ピン名</label>
+            <input type="text" id="pinName" placeholder="ピン名を入力してください。">
+
+            <button onclick="updatePin()">ピン適用</button>
+        </div>
+        <div class="divider"></div>
+        <div class="form-group">
+            <h2>地図のデフォルト設定</h2>
+            <label for="mapLatitude">基本緯度</label>
+            <input type="text" id="mapLatitude" value="35.6333">
+
+            <label for="mapLongitude">基本経度</label>
+            <input type="text" id="mapLongitude" value="139.6607">
+
+            <button onclick="updateMap()">地図のデフォルト値修正</button>
+        </div>
+        <div class="map-container">
+            <h2>地図を見る</h2>
+            <iframe id="map" class="map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d964.0823666872412!2d139.66073472658078!3d35.6333068519835!3m2!1i1024!2i768!4f13!3m3!1m2!1s0x6018f4901d4a5e7d%3A0x40a44d6fa10838ed!2z44CSMTU0LTAwMTIg5p2x5Lqs6YO95LiW55Sw6LC35Yy66aeS5rKi77yS5LiB55uu77yS4oiS77yR77yWIOecn-S4reODk-ODqw!5e0!3m2!1sja!2sjp!4v1728453845334!5m2!1sja!2sjp"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</body>
+</html>
+    <script>
+        function updatePin() {
+            const pinLatitude = document.getElementById("pinLatitude").value;
+            const pinLongitude = document.getElementById("pinLongitude").value;
+            const pinName = document.getElementById("pinName").value;
+            alert(`ピン設定:\n緯度: ${pinLatitude}\n経度: ${pinLongitude}\n名前: ${pinName}`);
+        }
+
+        function updateMap() {
+            const mapLatitude = document.getElementById("mapLatitude").value;
+            const mapLongitude = document.getElementById("mapLongitude").value;
+            const iframe = document.getElementById("map");
+
+            const newSrc = `https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d964.0823666872412!2d${mapLongitude}!3d${mapLatitude}!3m2!1i1024!2i768!4f13!3m3!1m2!1s0x6018f4901d4a5e7d%3A0x40a44d6fa10838ed!2z44CSMTU0LTAwMTIg5p2x5Lqs6YO95LiW55Sw6LC35Yy66aeS5rKi77yS5LiB55uu77yS4oiS77yR77yWIOecn-S4reODk-ODqw!5e0!3m2!1sja!2sjp!4v1728453845334!5m2!1sja!2sjp`;
+            iframe.src = newSrc;
+
+            alert(`地図が修正されました。:\n緯度: ${mapLatitude}\n経度: ${mapLongitude}`);
+        }
+        

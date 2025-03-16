@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="naver-site-verification" content="" />
+<meta name="description" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sample">
+<meta property="og:description" content="">
+<meta property="og:image" content="img/common/logo.png">
+<meta property="og:url" content="">
+<title>MainPage</title>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/topmenu_script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/feather.min.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="css/sh_common.css">
+<link rel="stylesheet" href="css/sh_main.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+</head>
+<body>
+	<div id="sh_wrapper">
+		<div th:insert="~{fragment/header :: header}"></div>
+		<main id="sh_container">
+			<div id="sh_container_wrapper">
+				<!-- main_banner [s] -->
+				<div id="mainVisual">
+					<div class="main_banner">
+						<div class="main_video">
+							<video loop="" playsinline="" muted="" autoplay="">
+								<source src="img/main/main_mp4.mp4" type="video/mp4">
+							</video>
+						</div>
+						<div class="main_txt">
+							<p class="txt01">
+								<span>#</span>build a global network
+							</p>
+							<p class="txt02">創造、進化、革新</p>
+						</div>
+					</div>
+					<div class="main_sub">
+						</span><br>
+					</div>
+				</div>
+				<script>
+                gsap.registerPlugin(ScrollTrigger);
+                ScrollTrigger.matchMedia({
+                    "(min-width: 1025px)" : function(){
+                        gsap.to("#mainVisual .main_video", {
+                            scrollTrigger: {
+                                pin: true,
+                                scrub: .2,
+                                trigger: "#mainVisual",
+                                toggleClass:"on",
+                                start: "top top",
+                                end: "+=1500"
+                            },	
+                            width:'85%',height:'730px','margin-top':'130px'
+                        });
+                    }
+                })
+                $(function(){
+                    setTimeout( function () {
+                        $("#mainVisual .txt01").addClass("active");
+                    }, 400);
+                    setTimeout( function () {
+                        $("#mainVisual .txt03").addClass("active");
+                    }, 400); 
+                    setTimeout( function () {
+                        $("#mainVisual .txt02").addClass("active");
+                    }, 800);        
+                });  
+                </script>
+				<section id="sh_section">
+					<section id="inc01">
+						<div class="inner">
+							<div class="l_txt">
+<!-- 								<p class="deco"> -->
+<!-- 									<img src="img/main/inc01/point_deco.png" alt="데코"> -->
+<!-- 								</p> -->
+								<div class="big_txt">
+									<p class="b_txt">様々な言語と</p>
+									<p class="b_txt">プラットフォームに</p>
+									<p class="b_txt">合わせたプログラムを</p>
+									<p class="b_txt">製作して配給します。</p>
+								</div>
+							</div>
+							<div class="r_cont">
+								<div class="cont">
+									<a th:href="@{/mainmenu/service}">
+										<p class="view_btn">
+											view
+											<svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" viewBox="0 0 24 24" fill="none"
+												stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-plus">
+												<line x1="12" y1="5" x2="12" y2="19"></line>
+												<line x1="5" y1="12" x2="19" y2="12"></line></svg>
+										</p>
+										<div>
+											<p class="img"></p>
+											<p class="txt">
+												<span>サービス</span> あなたに合う完成度の高いサービスを提供します。
+											</p>
+										</div>
+									</a>
+								</div>
+								<div class="cont">
+									<a th:href="@{/submenu/access}">
+										<div>
+											<p class="img"></p>
+											<p class="txt">
+												<span>アクセス</span> 新しいスキルを共有するあなたを待っています。
+											</p>
+										</div>
+										<p class="view_btn">
+											view
+											<svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" viewBox="0 0 24 24" fill="none"
+												stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-plus">
+												<line x1="12" y1="5" x2="12" y2="19"></line>
+												<line x1="5" y1="12" x2="19" y2="12"></line></svg>
+										</p>
+									</a>
+								</div>
+								<div class="cont">
+									<a th:href="@{/submenu/ceo}">
+										<p class="view_btn">
+											view
+											<svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" viewBox="0 0 24 24" fill="none"
+												stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-plus">
+												<line x1="12" y1="5" x2="12" y2="19"></line>
+												<line x1="5" y1="12" x2="19" y2="12"></line></svg>
+										</p>
+										<div>
+											<p class="img"></p>
+											<p class="txt">
+												<span>CEO紹介</span> 多様な言語と文化に合わせてグローバル配給ネットワークを構築しています。
+											</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</section>
+					<script>
+                    const textElements = gsap.utils.toArray('#inc01 .b_txt');
+                    textElements.forEach(text => {
+                        gsap.to(text, {
+                            backgroundSize: '100%',
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: text,
+                                start: 'center 90%',
+                                end: 'center 30%',
+                                scrub: true,
+                            },
+                        });
+                    });
+                    </script>
+					<section id="inc02">
+						<div class="inner">
+							<p class="big_e_txt l_txt" data-aos="fade-right">MAKE YOUR</p>
+							<div class="about_cont">
+								<div class="l_about">
+									<span>Your vision, Our reality</span> あなたのメッセージをお伝えします。 <br>ブランドの価値を輝かせましょう。
+								</div>
+								<div class="r_about">
+									<a th:href="@{/submenu/introduction}">会社紹介<span></span></a> <a
+										th:href="@{/mainmenu/inquiry}">お問い合わせ<span></span></a>
+								</div>
+							</div>
+							<p class="big_e_txt r_txt" data-aos="fade-left">BRAND VALUE</p>
+						</div>
+
+						<div class="txt_bar">
+							<ul class="loop_txt">
+								<li>emotions beyond imagery, with us<span></span></li>
+								<li>emotions beyond imagery, with us<span></span></li>
+								<li>emotions beyond imagery, with us<span></span></li>
+								<li>emotions beyond imagery, with us<span></span></li>
+								<li>emotions beyond imagery, with us<span></span></li>
+								<li>emotions beyond imagery, with us<span></span></li>
+								<li>emotions beyond imagery, with us<span></span></li>
+							</ul>
+						</div>
+					</section>
+<!-- 					<section id="inc03"> -->
+<!-- 						<div class="tit_wrap" data-aos="fade-up"> -->
+<!-- 							<p> -->
+<!-- 								PORT<span>刹那の感動を込めた瞬間、<br>あなたの話が始まります。 -->
+<!-- 								</span>FOLIO -->
+<!-- 							</p> -->
+<!-- 							<a href="####"> <i></i><span>ポートフォリオをもっと見ます</span></a> -->
+<!-- 						</div> -->
+<!-- 						<div class="slide_late" data-aos="fade-up"> -->
+<!-- 							<div class="swiper-container inc03_slide"> -->
+<!-- 								<div class="swiper-wrapper"> -->
+<!-- 									<article class="swiper-slide item"> -->
+<!-- 																				<a href=""> -->
+<!-- 										<div class="img " -->
+<!-- 											style="background-image: url(img/main/inc03/img05.jpg)"></div> -->
+<!-- 										<p>신차발매 홍보용 광고영상</p> -->
+<!-- 										</a> -->
+<!-- 									</article> -->
+<!-- 									<article class="swiper-slide item"> -->
+<!-- 																				<a href=""> -->
+<!-- 										<div class="img " -->
+<!-- 											style="background-image: url(img/main/inc03/img01.jpg)"></div> -->
+<!-- 										<p>신인그룹 홍보 티저영상</p> -->
+<!-- 										</a> -->
+<!-- 									</article> -->
+<!-- 									<article class="swiper-slide item"> -->
+<!-- 																				<a href=""> -->
+<!-- 										<div class="img " -->
+<!-- 											style="background-image: url(img/main/inc03/img02.jpg)"></div> -->
+<!-- 										<p>미아방지 캠페인 영상</p> -->
+<!-- 										</a> -->
+<!-- 									</article> -->
+<!-- 									<article class="swiper-slide item"> -->
+<!-- 																				<a href=""> -->
+<!-- 										<div class="img " -->
+<!-- 											style="background-image: url(img/main/inc03/img03.jpg)"></div> -->
+<!-- 										<p>가을철 화재예방 공익광고</p> -->
+<!-- 										</a> -->
+<!-- 									</article> -->
+<!-- 									<article class="swiper-slide item"> -->
+<!-- 																				<a href=""> -->
+<!-- 										<div class="img " -->
+<!-- 											style="background-image: url(img/main/inc03/img04.jpg)"></div> -->
+<!-- 										<p>오케스트라 발레공연 홍보영상</p> -->
+<!-- 										</a> -->
+<!-- 									</article> -->
+<!-- 								</div> -->
+<!-- 								<span class="swiper-notification" aria-live="assertive" -->
+<!-- 									aria-atomic="true"></span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="get_in" data-aos="fade-up"> -->
+<!-- 							<div class="l_get"> -->
+<!-- 								<a th:href="@{/mainmenu/recruitment}"> READY TO<br>GET -->
+<!-- 									TOGETHER ? -->
+<!-- 									<p></p> -->
+<!-- 								</a> -->
+<!-- 							</div> -->
+<!-- 							<div class="r_get"> -->
+<!-- 								<a href="">Get in touch</a> -->
+<!-- 								<p>私たちと一緒にあなたの話を伝える 世界に伝播してください。</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</section> -->
+					<script>
+                    var inc03Swiper = new Swiper(".inc03_slide", {
+                        loop: true,
+                        speed: 1000,
+                        slidesPerView: 1.5,
+                        centeredSlides: true,
+                        spaceBetween: 50,
+                        autoplay: {
+                            delay: 3500,
+                            disableOnInteraction: false,
+                        },
+                        pagination:false,
+                        breakpoints: {
+                            769:{
+                                slidesPerView: 3.5,
+                            },
+                            1025:{
+                                slidesPerView: 3.8,
+                            }
+                        }
+                    });
+                    </script>
+				</section>
+			</div>
+		</main>
+		<div id="sh_ft_btns">
+			<div class="btns">
+				<a class="tel" href="tel:1234-5678"><i class="fa fa-phone"></i>1234-5678</a>
+			</div>
+		</div>
+		<a id="fix_tel" href="tel:1234-5678" class="active"><i
+			class="fa fa-phone"></i></a>
+
+		<script>
+        $(window).on("scroll",function(){
+            if($(window).scrollTop() > 100) { 
+                $('#fix_tel').addClass('active');}
+            else{
+                $('#fix_tel').removeClass('active');}
+            return false;
+        });
+    </script>
+		<div th:replace="~{fragment/footer :: footer}"></div>
+	</div>
+	<script>
+    AOS.init();
+    feather.replace(); 
+    $(window).on("scroll",function(){
+    if($(window).scrollTop() > 100) { 
+        $('#fix_tel').addClass('active');}
+    else{
+        $('#fix_tel').removeClass('active');}
+    return false;
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+ .formula {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+        .formula .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .formula .numerator {
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
+        .formula .denominator {
+            padding-top: 5px;
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #ddd;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
