@@ -39,7 +39,7 @@
 					<li><a class="dropdown-item" href="#!">設定</a></li>
 					<li><a class="dropdown-item" href="#!">活動ログ</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">ログアウト</a></li>
+					<li><a class="dropdown-item" onclick="confirmLogout()">ログアウト</a></li> <!--th:href="@{/management/logout}"  -->
 				</ul></li>
 		</ul>
 	</nav>
@@ -228,6 +228,19 @@
 			</footer>
 		</div>
 	</div>
+	<script>
+    function confirmLogout() {
+        // logout popup
+        if (confirm("ログアウトしますか？")) {
+            // logout完了
+            alert("ログアウトしました。");
+            // logoutページにredirection
+            setTimeout(function() {
+                window.location.href = "/management/logout";  // logout URLに移動
+            }, 1000);  // 1秒後redirection
+        }
+    }
+</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>

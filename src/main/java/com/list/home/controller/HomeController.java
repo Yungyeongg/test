@@ -1,7 +1,10 @@
-package com.list.home;
+package com.list.home.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.list.home.Model.Admin;
 
 @Controller
 public class HomeController {
@@ -49,23 +52,12 @@ public class HomeController {
 	public String submenu5() {
 		return "submenu/margin";
 	}
-	
-	@GetMapping("management/manage")
-	public String management() {
-		return "management/manage";
-	}
-	
 
 	@GetMapping("management/introfix")
 	public String management1() {
 		return "management/introfix";
 	}
 	
-	@GetMapping("management/ceofix")
-	public String management2() {
-		return "management/ceofix";
-	}
-
 	@GetMapping("management/menufix")
 	public String management3() {
 		return "management/menufix";

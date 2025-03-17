@@ -1,4 +1,4 @@
-package com.list.home;
+package com.list.home.controller;
 
 import java.util.ArrayList;
 import java.util.List;
