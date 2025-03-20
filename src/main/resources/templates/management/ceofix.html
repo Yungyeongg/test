@@ -8,23 +8,24 @@
 </head>
 <body>
 	<h1>CEO紹介修正画面</h1>
-	<form id="editForm">
+	
+	<form id="editForm" th:action="@{/ceofix/save}" method="post" th:object="${page}" enctype="multipart/form-data">
+		<input type="hidden" name="id" th:value="${page.id}">
 		<div class="form-group">
-			<label for="title">タイトル</label> <input type="text" id="title"
-				placeholder="タイトルを入力してください" value="CEO紹介">
+			<label for="title">タイトル</label> <input type="text" name = "title" id="title"
+				th:field="*{title}" placeholder="タイトルを入力してください">
 		</div>
 		<div class="form-group">
-			<label for="subtitle">サブタイトル</label> <input type="text" id="subtitle"
-				placeholder="サブタイトルを入力してください" value="夢を分かち合う企業">
+			<label for="subtitle">サブタイトル</label> <input type="text" name = "subtitle" id="subtitle"
+				th:field="*{subtitle}" placeholder="サブタイトルを入力してください">
 		</div>
 		<div class="form-group">
-			<label for="photo">写真</label> <input type="file" id="photo"
+			<label for="photo">写真</label> <input type="file" name="file" th:field="*{file}"  id="photo"
 				accept="image/*">
 		</div>
 		<div class="form-group">
 			<label for="content">内容</label>
-			<textarea id="content">SISにお越しいただきありがとうございます。
-私たちSISはお客様の夢の実現をお手伝いし...</textarea>
+			<textarea name = "content" id="content" th:field="*{content}"></textarea>
 		</div>
 		<div class="button-group">
 			<button type="button" onclick="saveData()">保存</button>
@@ -40,16 +41,40 @@
 			photoSrc : ""
 		};
 
-		function saveData() {
-			const data = {
-				title : document.getElementById('title').value,
-				subtitle : document.getElementById('subtitle').value,
-				content : document.getElementById('content').value,
-				photo : document.getElementById('photo').files[0] || null
-			};
-			console.log("Saving data:", data);
-			alert("データが保存されました");
-		}
+		//function saveData() {
+		//	const data = {
+		//		title : document.getElementById('title').value,
+		//		subtitle : document.getElementById('subtitle').value,
+		//		content : document.getElementById('content').value,
+		//		photo : document.getElementById('photo').files[0] || null
+		//	};
+		////	console.log("Saving data:", data);
+		//	alert("データが保存されました");
+		//}
+	function saveData() {
+    const title = document.getElementById('title').value;
+    const subtitle = document.getElementById('subtitle').value;
+    const content = document.getElementById('content').value;
+    const file = document.getElementById('photo').files[0];
+
+    // 유효성 검사
+    if (!title) {
+        alert("タイトルを入力してください！");
+        return;
+    }
+    if (!content) {
+        alert("内容を入力してください！");
+        return;
+    }
+
+    const isConfirmed = confirm("内容を修正しますか。");
+    if (isConfirmed) {
+        document.getElementById("editForm").submit();
+        alert("内容を修正完了しました");
+    } else {
+        alert("保存がキャンセルされました");
+    }
+}
 
 		function resetForm() {
 			document.getElementById('title').value = initialData.title;

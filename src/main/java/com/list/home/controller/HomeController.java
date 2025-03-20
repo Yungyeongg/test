@@ -23,11 +23,6 @@ public class HomeController {
 		return "mainmenu/recruitment";
 	}
 
-	@GetMapping("mainmenu/inquiry")
-	public String mainmenu3() {
-		return "mainmenu/inquiry";
-	}
-
 	@GetMapping("submenu/introduction")
 	public String submenu1() {
 		return "submenu/introduction";
