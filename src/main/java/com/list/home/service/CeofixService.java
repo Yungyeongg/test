@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 @Service
 public class CeofixService {
 	
-	private static final String UPLOAD_DIR = "C:/workplace/SIS/src/main/resoures/static/img/sub/"; //ファイル保存経路
+	private static final String UPLOAD_DIR = "/static/img/sub/"; //ファイル保存経路
 	private final PageRepository pageRepository;
     private final HttpSession session; // 세션 사용
     
@@ -29,21 +29,20 @@ public class CeofixService {
     	return pageRepository.findById(id).orElse(new Page()); 
     }
     
-    public Page saveOrUpdateCeo(Long id, String title, String subtitle, String content, MultipartFile file) throws Exception {
+    public Page saveOrUpdateCeo(Page page, MultipartFile file)  {
         
     	String adminId = (String) session.getAttribute("adminId"); // 세션에서 어드민 ID 가져오기
         
     	if (adminId == null) {
-            throw new RuntimeException("관리자 세션 정보가 없습니다.");
+            //throw new RuntimeException("관리자 세션 정보가 없습니다.");
         }
 
-        Page page;
-        if (id == null) { // 새 글 등록
+        if (page.getId() == null) { // 새 글 등록
         	page = new Page();
         	page.setRegist(adminId);
         	page.setRegist_date(LocalDateTime.now());
         } else { // 기존 글 수정
-            page = pageRepository.findById(id).orElseThrow(() -> new RuntimeException("既存の情報がないです。"));
+            //page = pageRepository.findById(page.getId());
         }
 
         // 파일 저장
@@ -52,7 +51,7 @@ public class CeofixService {
         	String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             Path file_path = Paths.get(UPLOAD_DIR + fileName);
             //파일 저장
-            Files.write(file_path, file.getBytes());
+            //Files.write(file_path, file.getBytes());
 
             page.setFile_name(fileName);
             page.setFile_path("/img/sub/" + fileName); //상대경로로 저장
@@ -60,9 +59,9 @@ public class CeofixService {
         }
 
         // 내용 업데이트
-        page.setTitle(title);
-        page.setSubtitle(subtitle);
-        page.setContent(content);
+        page.setTitle(page.getTitle());
+        page.setSubtitle(page.getSubtitle());
+        page.setContent(page.getContent());
         page.setRenew(adminId);
         page.setRenew_date(LocalDateTime.now());
 

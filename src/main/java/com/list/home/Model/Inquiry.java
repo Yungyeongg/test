@@ -19,19 +19,15 @@ public class Inquiry {
 	private Long id;
 	
 	@Column(nullable = false)
-	///@NotEmpty(message = "名前を入力してください。")
 	private String name;
 	
 	@Column(nullable = false)
-	//@NotEmpty(message = "メールを入力してください。")
 	private String mail;
 	
 	@Column(nullable = false)
-	//@NotEmpty(message = "件名を入力してください。")
 	private String title;
 	
 	@Column(nullable = false)
-	//@NotEmpty(message = "内容を入力してください。")
 	private String content;
 	
 	@Column(nullable = false, updatable = false)

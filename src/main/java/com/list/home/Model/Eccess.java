@@ -1,5 +1,6 @@
 package com.list.home.Model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -10,36 +11,30 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "page")
-public class Page {
-
+@Table(name = "eccess")
+public class Eccess {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private String title;
 	
 	@Column(nullable = false)
 	private String subtitle;
 	
 	@Column(nullable = false)
-	private String file_path;
+	private BigDecimal latitude;
 	
 	@Column(nullable = false)
-	private String file_name;
+	private BigDecimal longitude;
 	
 	@Column(nullable = false)
-	private String content;
+	private String pin;
 	
 	@Column(nullable = false)
-	private String image_name;
-	
-	@Column(nullable = false)
-	private String image_url;
-	
-	@Column(nullable = false)
-	private char del_flag;
+	private int del_flag;
 	
 	@Column(nullable = false)
 	private String regist;
@@ -52,6 +47,8 @@ public class Page {
 	
 	@Column(nullable = false, updatable = false)
 	private LocalDateTime renew_date = LocalDateTime.now();
+	
+	public Eccess() {}
 
 	public Long getId() {
 		return id;
@@ -77,51 +74,35 @@ public class Page {
 		this.subtitle = subtitle;
 	}
 
-	public String getFile_path() {
-		return file_path;
+	public BigDecimal getLatitude() {
+		return latitude;
 	}
 
-	public void setFile_path(String file_path) {
-		this.file_path = file_path;
+	public void setLatitude(BigDecimal latitude) {
+		this.latitude = latitude;
 	}
 
-	public String getFile_name() {
-		return file_name;
+	public BigDecimal getLongitude() {
+		return longitude;
 	}
 
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
+	public void setLongitude(BigDecimal longitude) {
+		this.longitude = longitude;
 	}
 
-	public String getContent() {
-		return content;
+	public String getPin() {
+		return pin;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setPin(String pin) {
+		this.pin = pin;
 	}
 
-	public String getImage_name() {
-		return image_name;
-	}
-
-	public void setImage_name(String image_name) {
-		this.image_name = image_name;
-	}
-
-	public String getImage_url() {
-		return image_url;
-	}
-
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
-	}
-
-	public char getDel_flag() {
+	public int getDel_flag() {
 		return del_flag;
 	}
 
-	public void setDel_flag(char del_flag) {
+	public void setDel_flag(int del_flag) {
 		this.del_flag = del_flag;
 	}
 
@@ -155,5 +136,5 @@ public class Page {
 
 	public void setRenew_date(LocalDateTime renew_date) {
 		this.renew_date = renew_date;
-	}
+	};
 }

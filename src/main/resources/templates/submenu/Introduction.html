@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="회사소개-회사소개">
 <meta property="og:description" content="">
-<meta property="og:image" content="/img/common/logo.png">
+<meta property="og:image" th:content="@{${file_path}}">
 <meta property="og:url" content="">
 <title>会社紹介</title>
 <script src="/js/jquery-ui.js"></script>
@@ -49,21 +49,17 @@
 				<div id="sh_content">
 					<div id="greeting" class="pagecommon">
 						<div class="tit_area">
-							急速に発展しているSmart ITの世界<br />
+							<span th:text="${title1}"></span><br />
 							<p>
-								<b>IT企業SIS</b>が皆様と共に作っていきます。
+								<b th:text="${title2}"></b><span th:text="${title3}"></span>
 							</p>
 						</div>
 						<div class="img"></div>
 						<div class="cont">
-							<p class="st">未来をつなぐ技術、人のための革新</p>
+							<p class="st" th:text="${subtitle}"></p>
 							</br>
-							<div class="pl">SISは先端技術を基盤に人々の暮らしをより便利で豊かにするために努力するグローバルIT企業です。
-								急速に変化するデジタル時代に合わせて、シャイニングは新しい技術トレンドをリードし、顧客とパートナーに最高の価値を提供しています。</div>
-							<div class="pl">
-								SISは、顧客とパートナー、そして世界中のすべての人々が一緒に共有し、成長できるIT生態系を作っていきたいと考えています。
-								新しい挑戦を恐れず、絶え間ない革新で世界の舞台でリードしていきます。
-								私たちの技術は単純な革新を越え、より良い生活のための道を開いていくでしょう。<br />
+							<div class="pl" th:each="content : ${contents}" th:text="${content + '。'}">
+								<br />
 							</div>
 						</div>
 					</div>

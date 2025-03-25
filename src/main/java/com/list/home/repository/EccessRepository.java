@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.list.home.Model.Page;
+import com.list.home.Model.Eccess;
 
 @Repository
-public interface PageRepository extends JpaRepository<Page, Long>{
-
-	Optional<Page> findById(Long id);
+public interface EccessRepository extends JpaRepository<Eccess, Long> {
+	
+	Optional<Eccess> findTopByOrderByIdDesc();
 }

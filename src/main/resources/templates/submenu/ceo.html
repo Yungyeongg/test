@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="회사소개-회사소개">
 <meta property="og:description" content="">
-<meta property="og:image" content="/img/common/logo.png">
+<meta property="og:image" th:content="@{${file_path}}">
 <meta property="og:url" content="">
 <title>CEO紹介</title>
 <script src="/js/jquery-ui.js"></script>
@@ -48,21 +48,20 @@
 				<div id="sh_content">
 					<!-- 서브페이지 [s] -->
 					<div id="ceo" class="pagecommon">
-						<div class="tit_area">
-							CEO紹介<br />
+						<div class="tit_area"><br />
+								<p th:text="${title}"></p>
 							<p>
-								<b>夢を分かち合う企業</b>
+								<b><span th:text="${subtitle}"></span></b>
 							</p>
 						</div>
 						<div class="img"></div>
 						<div class="cont">
-							<p class="st">SISにお越しいただきありがとうございます。</p>
-							<div class="pl">私どもSISは収益創出だけのための経営理念よりは、共に共有し共に成長できる友人のようなパートナーとして、人のための技術でより豊かで新鮮に変化させるためにすべての力量を集中しています。</div>
+							<p class="st" th:text="${content1}"></p>
+							<div class="pl" th:text="${content2}"></div>
 							<br />
-							<div class="pl">
-								怠惰でなく、現実に安住しない姿勢で絶え間ない挑戦と革新で現分野の最高の企業になるために共に考え、共に成し遂げるSISになろうと思います。
-								いつも見守ってくださる方々に失望されない企業になります。<br />
-							</div>
+							<div class="pl" th:text="${content3}"></div>
+							<div class="pl" th:text="${content4}"></div><br />
+							
 							<p class="sign">
 								SIS <span>CEO名前</span>
 							</p>

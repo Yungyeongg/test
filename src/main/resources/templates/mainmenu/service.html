@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="회사소개-회사소개">
 <meta property="og:description" content="">
-<meta property="og:image" content="/img/common/logo.png">
+<meta property="og:image" th:content="@{${file_path}}">
 <meta property="og:url" content="">
 <title>サービス</title>
 <script src="/js/jquery-ui.js"></script>
@@ -27,38 +27,41 @@
 			<div id="sh_container_wrapper">
 				<div id="shSub">
 					<div class="txt_area">
-						<p>サービス</p>
+						<p th:text="${title}"></p>
 						<div>
 							<a th:href="@{/}"><span class="sound_only">Home</span> <svg
 									xmlns="http://www.w3.org/2000/svg" height="24"
 									viewBox="0 -960 960 960" width="24">
 									<path
 										d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"></path></svg></a>
-							<i class="fa fa-angle-right"></i>サービス<i></i>
+							<i class="fa fa-angle-right" ></i><i th:text="${title}"></i>
 						</div>
 					</div>
 				</div>
 				<ul id="shSnb">
-					<li class="on"><a th:href="@{/mainmenu/service}">サービス</a></li>
+					<li class="on"><a th:href="@{/mainmenu/service}" th:text="${title}"></a></li>
 				</ul>
 				<div id="sh_content">
 					<div id="greeting" class="pagecommon">
 						<div class="tit_area">
-							サービス<br />
-							<p>私たち株式会社SISは 日々発展していくIT業界に貢献できるよう様々な努力を傾注しています。</p>
-						</div>
+							<p th:text="${title}"></p>
+						</div><br />
+							<p th:text="${subtitle}"></p>
+						
 						<div class="img"></div>
 						<div class="cont">
-							<p class="st">システム開発</p>
-							<div class="pl">・汎用系・オープン系システム</div>
-							<div class="pl">・Windows系システム</div>
-							<div class="me">-企画提案・設計・製造・保守</div>
+							<p class="st"  th:text="${content1}"></p>
+							<div class="pl"  th:text="${content2}"></div>
+							<div class="pl"  th:text="${content3}"></div>
+							<div class="pl"  th:text="${content4}"></div>
+							<div class="me"  th:text="${content5}"></div>
 						</div>
 					</div>
 				</div>
+				</div>
 				<div id="sh_content">
 					<div id="greeting" class="pagecommon">
-						<div class="img" style="background-image: url('img/sub/CRM.png');"></div>
+						<div class="img" style="background-image: url('img/sub/CRM.png');"></div> 
 						<div class="cont2">
 							<p class="st">パッケージカスタマイズ</p>
 							<p class="st">開発・導入</p>

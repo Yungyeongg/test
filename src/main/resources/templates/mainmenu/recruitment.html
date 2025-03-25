@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="회사소개-회사소개">
 <meta property="og:description" content="">
-<meta property="og:image" content="/img/common/logo.png">
+<meta property="og:image" th:content="@{${file_path}}">
 <meta property="og:url" content="">
 <title>採用情報</title>
 <script src="/js/jquery-ui.js"></script>
@@ -45,29 +45,29 @@
 				<div id="sh_content">
 					<div id="greeting" class="pagecommon">
 						<div class="tit_area">
-							君も内に来ない？！<br />
+							<p th:text="${title}"></p> 
+							<br />
 							<p>
-								<b> 新入社員・経歴社員募集</b>
+								<b th:text="${subtitle}"></b>
 							</p>
 						</div>
 						<div class="img">
-							<img alt="" src="../img/sub/new_recruit.jpg"> <img alt=""
-								src="../img/sub/old_recruit.jpg">
+						    <img alt="" th:src="@{${file_path}}">
+							<img alt="" src="../img/sub/old_recruit.jpg">
 						</div>
 						<div class="cont">
-							<p class="me">新入社員</p>
+							<p class="me" th:text="${img_name}"></p>
 							<p class="me2">経歴社員</p>
 						</div>
 						<div class="cont">
-							<p class="st">募集部門</p>
-							<div class="pl">1. システム開発
-								-Java、.Net、C++、Python、その他オープン系・Windows系システム開発者</div>
+							<!--  <p class="st" th:text="${content1}"></p>-->
+							<div class="pl" th:text="${content1}"></div>
 							<br />
-							<div class="pl">2. パッケージ開発 -Dynamics CRM、intra-Mart、Sales
-								Forceなど各種パッケージの開発者</div>
+							<div class="pl" th:text="${content2}"></div>
 							<br />
-							<div class="pl">3. クラウド開発 -AWS(Amazon Web
-								Service)、Azure、GCP(Google Cloud Platform)の開発者</div>
+							<div class="pl" th:text="${content3}"></div>
+							<br />
+							<div class="pl" th:text="${content4}"></div>
 						</div>
 					</div>
 				</div>

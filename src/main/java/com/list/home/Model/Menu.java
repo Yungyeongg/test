@@ -10,18 +10,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "page")
-public class Page {
-
+@Table(name = "menu")
+public class Menu {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(unique = true, nullable = false)
-	private String title;
+
+	@Column(nullable = false)
+	private Long parent_id;
 	
 	@Column(nullable = false)
-	private String subtitle;
+	private String name;
 	
 	@Column(nullable = false)
 	private String file_path;
@@ -30,28 +30,30 @@ public class Page {
 	private String file_name;
 	
 	@Column(nullable = false)
-	private String content;
+	private String link;
 	
 	@Column(nullable = false)
-	private String image_name;
+	private Integer arrange;
 	
 	@Column(nullable = false)
-	private String image_url;
+	private Integer active;
 	
 	@Column(nullable = false)
-	private char del_flag;
+	private Integer del_flag;
 	
 	@Column(nullable = false)
 	private String regist;
 	
-	@Column(nullable = false, updatable = false)
+	@Column(nullable = false)
 	private LocalDateTime regist_date = LocalDateTime.now();
 	
 	@Column(nullable = false)
 	private String renew;
 	
-	@Column(nullable = false, updatable = false)
+	@Column(nullable = false)
 	private LocalDateTime renew_date = LocalDateTime.now();
+	
+	public Menu () {}
 
 	public Long getId() {
 		return id;
@@ -61,20 +63,20 @@ public class Page {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public Long getParent_id() {
+		return parent_id;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setParent_id(Long parent_id) {
+		this.parent_id = parent_id;
 	}
 
-	public String getSubtitle() {
-		return subtitle;
+	public String getName() {
+		return name;
 	}
 
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getFile_path() {
@@ -93,35 +95,35 @@ public class Page {
 		this.file_name = file_name;
 	}
 
-	public String getContent() {
-		return content;
+	public String getLink() {
+		return link;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setLink(String link) {
+		this.link = link;
 	}
 
-	public String getImage_name() {
-		return image_name;
+	public Integer getArrange() {
+		return arrange;
 	}
 
-	public void setImage_name(String image_name) {
-		this.image_name = image_name;
+	public void setArrange(Integer arrange) {
+		this.arrange = arrange;
 	}
 
-	public String getImage_url() {
-		return image_url;
+	public Integer getActive() {
+		return active;
 	}
 
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
+	public void setActive(Integer active) {
+		this.active = active;
 	}
 
-	public char getDel_flag() {
+	public Integer getDel_flag() {
 		return del_flag;
 	}
 
-	public void setDel_flag(char del_flag) {
+	public void setDel_flag(Integer del_flag) {
 		this.del_flag = del_flag;
 	}
 
@@ -155,5 +157,5 @@ public class Page {
 
 	public void setRenew_date(LocalDateTime renew_date) {
 		this.renew_date = renew_date;
-	}
+	};
 }

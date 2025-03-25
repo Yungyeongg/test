@@ -13,31 +13,6 @@ public class HomeController {
 		return "index";
 	}
 
-	@GetMapping("mainmenu/service")
-	public String mainmenu1() {
-		return "mainmenu/service";
-	}
-
-	@GetMapping("mainmenu/recruitment")
-	public String mainmenu2() {
-		return "mainmenu/recruitment";
-	}
-
-	@GetMapping("submenu/introduction")
-	public String submenu1() {
-		return "submenu/introduction";
-	}
-
-	@GetMapping("submenu/ceo")
-	public String submenu2() {
-		return "submenu/ceo";
-	}
-
-	@GetMapping("submenu/access")
-	public String submenu3() {
-		return "submenu/access";
-	}
-
 	@GetMapping("submenu/partner")
 	public String submenu4() {
 		return "submenu/partner";
@@ -62,7 +37,6 @@ public class HomeController {
 	public String management4() {
 		return "management/partnerfix";
 	}
-	
 	@GetMapping("management/accessfix")
 	public String management5() {
 		return "management/accessfix";

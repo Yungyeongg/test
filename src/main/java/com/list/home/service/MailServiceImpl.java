@@ -28,18 +28,19 @@ public class MailServiceImpl implements MailService {
 	        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 	        helper.setFrom("yun990217@gmail.com");
 	        //helper.setTo(adminEmails.toArray(new String[0]));
-	        helper.setTo(adminEmails.stream().map(Admin::getMail).toArray(String[]::new));
+	        helper.setTo(adminEmails.stream() //List collection処理
+	        						.map(Admin::getMail) //Adminオブジェクトからmailだけ抽出
+	        						.toArray(String[]::new)); //String typeのmailをarrayで変換
 	        helper.setSubject("お問い合わせが来ました。");
 	        helper.setText(buildEmailContent(inquiry), true);
 
 	        mailSender.send(message);
 	        
 	       } catch (MessagingException e) {
-	    	  
 	    	   e.printStackTrace();
-	            // または例外を再throwできる
-	            throw new RuntimeException("Failed to send email", e);
-	       }
+	           // または例外を再throwできる
+	             throw new RuntimeException("Failed to send email", e);
+	      }
 	}
 	
 	public String buildEmailContent(Inquiry inquiry) {
@@ -52,6 +53,6 @@ public class MailServiceImpl implements MailService {
         content.append("<p>タイトル: ").append(inquiry.getTitle()).append("</p>");
         content.append("<p>内容: ").append(inquiry.getContent()).append("</p>");
         content.append("<p>登録日: ").append(inquiry.getRegist_date()).append("</p>");
-        return content.toString();
+        return content.toString(); // 最終　HTML　文字列返還
     }
 }
