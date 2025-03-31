@@ -2,6 +2,8 @@ package com.list.home.Model;
 
 import java.time.LocalDateTime;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class Page {
 	
 	@Column(nullable = false)
 	private String file_path;
-	
+
 	@Column(nullable = false)
 	private String file_name;
 	

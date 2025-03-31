@@ -1,67 +1,56 @@
 package com.list.home.Model;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "menu")
-public class Menu {
+@Table(name = "partner")
+public class Partner {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	//@OneToMany(mappedBy = "parentId")
-    //private List<Menu> subMenus; 
+	@Column(unique = true, nullable = false)
+	private String title;
 	
 	@Column(nullable = false)
-    private Long parent_id;
-	
-	@Column(nullable = false)
-	private String name;
+	private String subtitle;
 	
 	@Column(nullable = false)
 	private String file_path;
-	
+
 	@Column(nullable = false)
 	private String file_name;
 	
 	@Column(nullable = false)
-	private String link;
+	private String image_name;
 	
 	@Column(nullable = false)
-	private Integer arrange;
+	private String image_url;
 	
 	@Column(nullable = false)
-	private Integer active;
-	
-	@Column(nullable = false)
-	private Integer del_flag;
+	private char del_flag;
 	
 	@Column(nullable = false)
 	private String regist;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, updatable = false)
 	private LocalDateTime regist_date = LocalDateTime.now();
 	
 	@Column(nullable = false)
 	private String renew;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, updatable = false)
 	private LocalDateTime renew_date = LocalDateTime.now();
-	
-	public Menu () {}
+	  
+	public Partner() {}
 	
 	public Long getId() {
 		return id;
@@ -71,20 +60,20 @@ public class Menu {
 		this.id = id;
 	}
 
-	public Long getParent_id() {
-		return parent_id;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setParent(Long parent_id) {
-		this.parent_id = parent_id;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getName() {
-		return name;
+	public String getSubtitle() {
+		return subtitle;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
 	}
 
 	public String getFile_path() {
@@ -103,35 +92,27 @@ public class Menu {
 		this.file_name = file_name;
 	}
 
-	public String getLink() {
-		return link;
+	public String getImage_name() {
+		return image_name;
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	public void setImage_name(String image_name) {
+		this.image_name = image_name;
 	}
 
-	public Integer getArrange() {
-		return arrange;
+	public String getImage_url() {
+		return image_url;
 	}
 
-	public void setArrange(Integer arrange) {
-		this.arrange = arrange;
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
 	}
 
-	public Integer getActive() {
-		return active;
-	}
-
-	public void setActive(Integer active) {
-		this.active = active;
-	}
-
-	public Integer getDel_flag() {
+	public char getDel_flag() {
 		return del_flag;
 	}
 
-	public void setDel_flag(Integer del_flag) {
+	public void setDel_flag(char del_flag) {
 		this.del_flag = del_flag;
 	}
 
@@ -165,5 +146,5 @@ public class Menu {
 
 	public void setRenew_date(LocalDateTime renew_date) {
 		this.renew_date = renew_date;
-	};
+	}
 }

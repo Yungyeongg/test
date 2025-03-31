@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="/css/aos.css">
 <link rel="stylesheet" href="/css/sh_common.css">
 <link rel="stylesheet" href="/css/sh_sub.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/> -->
 </head>
 <body>
 	<div id="sh_wrapper" class="sub">
@@ -50,14 +50,16 @@
 					<!-- 서브페이지 [s] -->
 					<div id="greeting" class="pagecommon">
 						<div class="tit_area" th:text="${title}"><br /></div>
-						<div class="tit_area"><p th:text="${subtitle}"></p></div>			
-				<div id="map" style="height: 500px;"><iframe id="map" class="map"
+						<div class="tit_area"><p th:text="${subtitle}"></p></div>
+				   </div>
+				   <div id="map" style="height: 500px;"  class="map-container">
+			<iframe id="map" class="map"  style="height: 500px; width: 100%;"
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d964.0823666872412!2d139.66073472658078!3d35.6333068519835!3m2!1i1024!2i768!4f13!3m3!1m2!1s0x6018f4901d4a5e7d%3A0x40a44d6fa10838ed!2z44CSMTU0LTAwMTIg5p2x5Lqs6YO95LiW55Sw6LC35Yy66aeS5rKi77yS5LiB55uu77yS4oiS77yR77yWIOecn-S4reODk-ODqw!5e0!3m2!1sja!2sjp!4v1728453845334!5m2!1sja!2sjp"
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe></div>
-					</div>
+            </iframe>
+		    </div>
 				</div>
-			</div>
+			
 		</div>
 		<div th:replace="~{fragment/footer :: footer}"></div>
 	</div>

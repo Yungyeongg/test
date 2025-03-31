@@ -48,16 +48,28 @@
 					<li><a th:href="@{/submenu/margin}">マージン</a></li>
 				</ul>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">파트너 목록</a>
+        <a class="navbar-brand" href="#">パートナー目録</a>
     </nav>
     <div class="container my-5">
-        <h2 class="text-center mb-4">파트너 목록</h2>
+        <h2 class="text-center mb-4" th:text="${partnerTitle}"></h2>
 
         <div class="row row-cols-1 row-cols-md-4 g-4" id="partnerList">
         </div>
-
-        <div class="text-center mt-4">
-            <a href="partner-management.html" class="btn btn-secondary">관리 페이지로 돌아가기</a>
+    <div class="container my-5">
+    	<h2 class="text-center mb-4" th:text="${partnerSubtitle}"></h2>
+    	<div class="row row-cols-1 row-cols-md-4 g-4">
+        	<div class="col" th:each="partner : ${partners}">
+           	 　<div class="partner bg-light p-3">
+                	<a th:href="${partner.image_url}" target="_blank">
+                	<img th:src="${partner.file_path}" th:alt="|${partner.image_name} ロゴ|" class="img-fluid" > 
+            		</a>
+                	<h5 th:text="${partner.image_name}"></h5>
+            　</div>
+       	　　　</div>
+    	</div>
+	</div>
+        <div class="texte-cntre mt-4">
+            <a href="partner-management.html" class="btn btn-secondary">管理者ページに戻る</a>
         </div>
     </div>
 		<div th:replace="~{fragment/footer :: footer}"></div>
@@ -76,27 +88,32 @@
 		});
 	</script>
 	<script>
-        const savedPartners = JSON.parse(localStorage.getItem('partners')) || [];
 
-        function displayPartners() {
-            const partnerList = document.getElementById('partnerList');
-            partnerList.innerHTML = '';
+        /* function displayPartners() {
+            fetch('/api/partners/list') // サーバーでパートナー目録持ってくる
+                .then(response => response.json())
+                .then(partners => {
+                    const partnerList = document.getElementById('partnerList');
+                    partnerList.innerHTML = '';
 
-            savedPartners.forEach(partner => {
-                const partnerCard = `
-                    <div class="col">
-                        <div class="partner bg-light">
-                            <img src="${partner.logo}" alt="${partner.name} 로고" class="img-fluid">
-                            <h5>${partner.name || '이름 없음'}</h5>
-                            <a href="${partner.link}" target="_blank">${partner.link || '링크 없음'}</a>
-                        </div>
-                    </div>
-                `;
-                partnerList.innerHTML += partnerCard;
-            });
+                    partners.forEach(partner => {
+                        const partnerCard = `
+                            <div class="col">
+                                <div class="partner bg-light">
+                                    <img src="${partner.logo}" alt="${partner.name} ロゴ" class="img-fluid">
+                                    <h5>${partner.name || '名前なし'}</h5>
+                                    <a href="${partner.link}" target="_blank">${partner.link || 'リンクなし'}</a>
+                                </div>
+                            </div>
+                        `;
+                        partnerList.innerHTML += partnerCard;
+                    });
+                })
+                .catch(error => console.error("パートナー目録呼び込む失敗:", error));
         }
 
-        displayPartners();
+        //　ページロード時データ持ってくる
+        window.onload = displayPartners; */
     </script>
 </body>
 </html>

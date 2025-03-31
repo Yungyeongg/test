@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,6 @@
 	<h1>CEO紹介修正画面</h1>
 	
 	<form id="editForm" th:action="@{/ceofix/save}" method="post" th:object="${page}" enctype="multipart/form-data">
-		<input type="hidden" name="id" th:value="${page.id}">
 		<div class="form-group">
 			<label for="title">タイトル</label> <input type="text" name = "title" id="title"
 				th:field="*{title}" placeholder="タイトルを入力してください">
@@ -20,7 +19,7 @@
 				th:field="*{subtitle}" placeholder="サブタイトルを入力してください">
 		</div>
 		<div class="form-group">
-			<label for="photo">写真</label> <input type="file" name="file" th:field="*{file}"  id="photo"
+			<label for="photo">写真</label> <input type="file" name="file"  id="photo"
 				accept="image/*">
 		</div>
 		<div class="form-group">

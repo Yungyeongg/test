@@ -11,8 +11,28 @@
 	<div class="menu-management">
 		<div class="menu-section" id="mainMenuSection">
 			<h2>大メニュー管理</h2>
-			<ul id="mainMenuList">
-			</ul>
+			<!-- 대메뉴 출력 -->
+<ul id="mainMenuList">
+    <th:block th:each="mainMenu : ${mainMenus}">
+        <li>
+            <!-- 대메뉴 이름 출력 -->
+            <span th:text="${mainMenu.name}"></span>
+            <button th:onclick="|selectMainMenu(${mainMenu.id})|">修正</button>
+            <button th:onclick="|deleteMainMenu(${mainMenu.id})|">削除</button>
+
+            <!-- 소메뉴 출력 -->
+            <ul id="subMenuList-${mainMenu.id}">
+                <th:block th:each="subMenu : ${subMenus[mainMenu.id]}">
+                    <li>
+                        <span th:text="${subMenu.name}"></span>
+                        <button th:onclick="|editSubMenu(${subMenu.id})|">修正</button>
+                        <button th:onclick="|deleteSubMenu(${subMenu.id})|">削除</button>
+                    </li>
+                </th:block>
+            </ul>
+        </li>
+    </th:block>
+</ul>
 			<input type="text" id="newMainMenu" placeholder="大メニューを入力">
 			<button onclick="addMainMenu()">追加</button>
 			<button class="delete" onclick="deleteMainMenu()">削除</button>

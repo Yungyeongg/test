@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="회사소개-회사소개">
 <meta property="og:description" content="">
-<meta property="og:image" th:content="@{${file_path}}">
+<!--  <meta property="og:image" th:content="@{${file_path}}">-->
 <meta property="og:url" content="">
 <title>CEO紹介</title>
 <script src="/js/jquery-ui.js"></script>
@@ -54,7 +54,9 @@
 								<b><span th:text="${subtitle}"></span></b>
 							</p>
 						</div>
-						<div class="img"></div>
+						<div class="img">
+							<img th:src="@{${file_path}}" alt="CEO Image" width="300px">
+						</div>
 						<div class="cont">
 							<p class="st" th:text="${content1}"></p>
 							<div class="pl" th:text="${content2}"></div>

@@ -14,21 +14,70 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container my-5">
+  <!--   <div class="container my-5">
         <h2 class="text-center mb-4">パートナー管理</h2>
+		<form id="partnerForm" th:action="@{/savePartners}" method="post" enctype="multipart/form-data">
+        	パートナーリスト
+        	<div class="row row-cols-1 row-cols-md-4 g-4" id="partnerList">
+            動的にパートナーが追加されます。
+        	</div>
 
-        <!-- パートナーリスト -->
-        <div class="row row-cols-1 row-cols-md-4 g-4" id="partnerList">
-            <!-- 動的にパートナーが追加されます。 -->
-        </div>
+       		 保存およびプレビューのボタン
+        	<div class="buttons-container">
+            	<button class="btn btn-success" id="savePartnersBtn" type = "submit">保存</button>
+        	</div>
+         </form>
+         
+    </div> -->
+    
+    <form id="partnerForm" th:action="@{/savePartners}" method="post" enctype="multipart/form-data">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col" th:each="partner, stat : ${partners}">
+            <div class="partner bg-light p-3">
+                <!-- file -->
+               <input type="file" class="form-control mb-2" 
+       name="partnerFiles" 
+       id="fileInput-[[${stat.index}]]"
+       data-index="[[${stat.index}]]"
+       onchange="previewImage(event)">
 
-        <!-- 保存およびプレビューのボタン -->
-        <div class="buttons-container">
-            <button class="btn btn-success" id="savePartnersBtn">保存</button>
-            <button class="btn btn-primary" id="previewPartnersBtn">プレビュー</button>
+                <!-- img -->
+                <img th:src="${partner.file_path}" alt="ロゴ" class="img-fluid partner-logo"  th:id="'partnerLogo-' + ${stat.index}">
+
+                <!-- 名前 -->
+                <input type="text" class="form-control mb-2" name="partners[${stat.index}].image_name" 
+                       th:value="${partner.image_name}" placeholder="パートナー名を入力してください">
+
+                <!-- URL -->
+                <input type="text" class="form-control mb-2" name="partners[${stat.index}].image_url" 
+                       th:value="${partner.image_url}" placeholder="リンクを入力してください">
+            </div>
         </div>
     </div>
+
+    <!--保存ボタン -->
+    <div class="buttons-container">
+        <button type="submit" class="btn btn-success">保存</button>
+    </div>
+</form>
+    <button class="btn btn-primary" id="previewPartnersBtn">プレビュー</button>
 	<script>
+	
+	// ファイルプリビュー
+function previewImage(event) {
+    const fileInput = event.target; // 이벤트가 발생한 input 요소
+    const index = fileInput.getAttribute("data-index"); // data-index 속성 값 읽기
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById(`partnerLogo-${index}`).src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+	
 	 // パートナーリストを格納する配列
     let partners = [
         { name: 'パートナーA', logo: 'https://via.placeholder.com/150', link: '' },
@@ -36,6 +85,33 @@
         { name: 'パートナーC', logo: 'https://via.placeholder.com/150', link: '' },
         { name: 'パートナーD', logo: 'https://via.placeholder.com/150', link: '' }
     ];
+	 
+    // パートナー名前変更関数
+    function updateName(index) {
+        const nameInput = document.getElementById('partnerName${index}');
+        partners[index].name = nameInput.value; //　名前値を更新
+    }
+	 
+ 	// パートナーロゴ変更関数
+    function changeLogo(index) {
+        const fileInput = document.getElementById('fileInput${index}');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                partners[index].logo = event.target.result; // ロゴURLを更新
+                displayPartners(); // 更新されたパートナーリストを表示
+            };
+            reader.readAsDataURL(file); // ファイルをデータURLとして読み込む
+        }
+    }
+
+    // パートナーリンク更新関数
+    function updateLink(index) {
+        const linkInput = document.getElementById('partnerLink${index}');
+        partners[index].link = linkInput.value; // リンク値を更新
+    }
 
     // パートナーリストを画面に表示する関数
     function displayPartners() {
@@ -53,6 +129,7 @@
                             placeholder="パートナー名を入力してください。" 
                             id="partnerName${index}" 
                             value="${partner.name}">
+                            onchange="updateName(${index})"> 
                         <input 
                             type="text" 
                             class="form-control mb-2" 
@@ -89,27 +166,6 @@
         displayPartners(); // 更新されたパートナーリストを表示
     }
 
-    // パートナーロゴ変更関数
-    function changeLogo(index) {
-        const fileInput = document.getElementById(`fileInput${index}`);
-        const file = fileInput.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                partners[index].logo = event.target.result; // ロゴURLを更新
-                displayPartners(); // 更新されたパートナーリストを表示
-            };
-            reader.readAsDataURL(file); // ファイルをデータURLとして読み込む
-        }
-    }
-
-    // パートナーリンク更新関数
-    function updateLink(index) {
-        const linkInput = document.getElementById(`partnerLink${index}`);
-        partners[index].link = linkInput.value; // リンク値を更新
-    }
-
     // パートナー追加関数
     function addPartner() {
         const newPartner = { name: '', logo: 'https://via.placeholder.com/150', link: '' };
@@ -130,6 +186,19 @@
 
     // 初期パートナーリストを表示
     displayPartners();
+    
+    //サーバーに提出する前にpartners配列をサーバーに伝達するための準備
+    document.getElementById('partnerForm').addEventListener('submit',(event) => {
+    	const form = event.target;
+    	form.querySelectorAll('input').forEach((input, index) => {
+    		if(input.name === 'partners[${index}].name') {
+    			input.value = partners[index].name;
+    		}
+    		if(input.name === 'partners[${index}].link') {
+    			input.value = partners[index].link;
+    		}
+    	});
+    }); 
     </script>
 </body>
 </html>

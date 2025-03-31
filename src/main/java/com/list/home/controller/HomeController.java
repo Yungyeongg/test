@@ -12,11 +12,6 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
-
-	@GetMapping("submenu/partner")
-	public String submenu4() {
-		return "submenu/partner";
-	}
 	
 	@GetMapping("submenu/margin")
 	public String submenu5() {
@@ -28,15 +23,6 @@ public class HomeController {
 		return "management/introfix";
 	}
 	
-	@GetMapping("management/menufix")
-	public String management3() {
-		return "management/menufix";
-	}
-	
-	@GetMapping("management/partnerfix")
-	public String management4() {
-		return "management/partnerfix";
-	}
 	@GetMapping("management/accessfix")
 	public String management5() {
 		return "management/accessfix";
